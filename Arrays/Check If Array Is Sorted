@@ -1,0 +1,63 @@
+# 005 - Check if Array is Sorted (GFG)
+
+## Problem
+
+Check whether the given array is sorted in non-decreasing order. Return `true` if it is sorted; otherwise, return `false`.
+
+### Example
+
+**Input:**
+
+[1, 2, 3, 4, 5]
+
+**Output:**
+
+true
+
+## Approach
+
+* Traverse the array one time.
+* Compare each element with the next element.
+* If the current element is greater than the next element, return `false`.
+* If the loop finishes without finding any wrong pair, return `true`.
+
+---
+
+## Java Code
+
+```java
+class Solution {
+    public boolean isSorted(int[] arr) {
+
+        int n = arr.length;
+
+        for (int i = 0; i < n - 1; i++) {
+
+            if (arr[i] > arr[i + 1]) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
+```
+
+---
+
+## Time Complexity
+
+**O(n)**
+
+## Space Complexity
+
+**O(1)**
+
+## Key Points
+
+* One Traversal
+* Compare the current element with the next element.
+* Return `false` if any pair is out of order.
+* Return `true` after checking the entire array.
+
+
