@@ -6,10 +6,9 @@ Find the second largest element in the given array. If it does not exist, return
 
 ### Example
 
-```text
 Input:  [10, 5, 20, 8, 15]
 Output: 15
-```
+
 
 ## Approach
 
