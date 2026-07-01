@@ -1,0 +1,60 @@
+# 006 - Linear Search (GFG)
+
+## Problem
+
+Find the index of the given element `x` in the array. If the element is not present, return `-1`.
+
+### Example
+
+**Input:**
+arr = [10, 20, 30, 40]
+x = 30
+
+**Output:**
+
+2
+
+
+## Approach
+
+* Traverse the array one time.
+* Compare each element with `x`.
+* If the element is found, return its index.
+* If the loop finishes and the element is not found, return `-1`.
+
+---
+
+## Java Code
+
+```java
+class Solution {
+    public int search(int arr[], int x) {
+
+        for (int i = 0; i < arr.length; i++) {
+
+            if (arr[i] == x) {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+}
+```
+
+---
+
+## Time Complexity
+
+**O(n)**
+
+## Space Complexity
+
+**O(1)**
+
+## Key Points
+
+* One Traversal
+* Compare each element with `x`.
+* Return the index if the element is found.
+* Return `-1` if the element is not found.
