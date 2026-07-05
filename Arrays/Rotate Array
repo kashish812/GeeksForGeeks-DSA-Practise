@@ -1,0 +1,87 @@
+# 007 - Left Rotate an Array by D Places (GFG)
+
+## Problem
+
+Given an array and an integer `d`, rotate the array to the left by `d` positions.
+
+### Example
+
+**Input:**
+arr = [1, 2, 3, 4, 5]
+d = 2
+
+**Output:**
+
+[3, 4, 5, 1, 2]
+
+
+
+## Algorithm
+
+1. Find the size of the array (`n`).
+2. If `d` is greater than `n`, update `d = d % n`.
+3. Reverse the first `d` elements.
+4. Reverse the remaining elements.
+5. Reverse the complete array.
+6. The array is now left rotated by `d` places.
+
+---
+
+## Approach
+
+* Divide the array into two parts using `d`.
+* Reverse the first part.
+* Reverse the second part.
+* Reverse the whole array.
+* The final array is left rotated.
+
+---
+
+## Java Code
+
+```java
+class Solution {
+
+    public void rotate(int[] arr, int d) {
+
+        int n = arr.length;
+
+        d = d % n;
+
+        reverse(arr, 0, d - 1);
+        reverse(arr, d, n - 1);
+        reverse(arr, 0, n - 1);
+    }
+
+    public void reverse(int[] arr, int start, int end) {
+
+        while (start < end) {
+
+            int temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+
+            start++;
+            end--;
+        }
+    }
+}
+```
+
+---
+
+## Time Complexity
+
+**O(n)**
+
+## Space Complexity
+
+**O(1)**
+
+## Key Points
+
+* `d` is the number of positions to rotate.
+* Reverse the first `d` elements.
+* Reverse the remaining elements.
+* Reverse the complete array.
+* Uses the Two Pointer Approach.
