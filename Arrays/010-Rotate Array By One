@@ -1,0 +1,87 @@
+# 010 - Rotate Array by One (Using Reversal Algorithm) (GFG)
+
+## Problem
+
+Given an array, rotate it by one position in the clockwise (right) direction.
+
+### Example
+
+**Input:**
+
+```text
+arr = [1, 2, 3, 4, 5]
+```
+
+**Output:**
+
+```text
+[5, 1, 2, 3, 4]
+```
+
+---
+
+## Algorithm
+
+1. Find the size of the array (`n`).
+2. Reverse the complete array.
+3. Reverse the first `1` element.
+4. Reverse the remaining `n - 1` elements.
+5. The array is now rotated by one position to the right.
+
+---
+
+## Approach
+
+* Reverse the whole array.
+* Reverse the first element.
+* Reverse the remaining elements.
+* The final array is rotated by one position.
+
+---
+
+## Java Code
+
+```java
+class Solution {
+
+    public void rotate(int[] arr) {
+
+        int n = arr.length;
+
+        reverse(arr, 0, n - 1);
+        reverse(arr, 0, 0);
+        reverse(arr, 1, n - 1);
+    }
+
+    public void reverse(int[] arr, int start, int end) {
+
+        while (start < end) {
+
+            int temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+
+            start++;
+            end--;
+        }
+    }
+}
+```
+
+---
+
+## Time Complexity
+
+**O(n)**
+
+## Space Complexity
+
+**O(1)**
+
+## Key Points
+
+* Reverse the complete array.
+* Reverse the first `1` element.
+* Reverse the remaining elements.
+* Uses the Two Pointer Approach.
+* In-place solution with constant extra space.
