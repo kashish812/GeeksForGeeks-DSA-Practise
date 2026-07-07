@@ -1,0 +1,127 @@
+# 012 - Union of Two Sorted Arrays (GFG)
+
+## Problem
+
+Given two **sorted arrays**, return the **union** of both arrays. The union should contain **all distinct elements** in sorted order.
+
+### Example
+
+**Input**
+
+```text
+a = [1, 2, 2, 3, 4]
+b = [2, 3, 5]
+
+**Output**
+[1, 2, 3, 4, 5]
+
+
+## Algorithm
+
+1. Create an empty `ArrayList` to store the answer.
+2. Initialize two pointers:
+
+   * i = 0 for the first array.
+   * j = 0 for the second array.
+3. Traverse both arrays using two pointers.
+4. Skip duplicate elements in both arrays.
+5. If one array is exhausted, add the remaining elements of the other array.
+6. Otherwise:
+
+   * If `a[i] < b[j]`, add `a[i]` and move `i`.
+   * If `b[j] < a[i]`, add `b[j]` and move `j`.
+   * If both are equal, add the element once and move both pointers.
+7. Return the union list.
+
+---
+
+## Approach
+
+* Since both arrays are **sorted**, use the **Two Pointer Technique**.
+* Skip duplicate elements before comparing.
+* Add only distinct elements to the answer.
+* Continue until both arrays are completely traversed.
+
+---
+
+## Java Code
+
+```java
+class Solution {
+    public static ArrayList<Integer> findUnion(int a[], int b[]) {
+
+        ArrayList<Integer> ans = new ArrayList<>();
+
+        int i = 0;
+        int j = 0;
+
+        while (i < a.length || j < b.length) {
+
+            while (i > 0 && i < a.length && a[i] == a[i - 1]) {
+                i++;
+            }
+
+            while (j > 0 && j < b.length && b[j] == b[j - 1]) {
+                j++;
+            }
+
+            if (i >= a.length) {
+                ans.add(b[j]);
+                j++;
+                continue;
+            }
+
+            if (j >= b.length) {
+                ans.add(a[i]);
+                i++;
+                continue;
+            }
+
+            if (a[i] < b[j]) {
+                ans.add(a[i]);
+                i++;
+            }
+            else if (b[j] < a[i]) {
+                ans.add(b[j]);
+                j++;
+            }
+            else {
+                ans.add(a[i]);
+                i++;
+                j++;
+            }
+        }
+
+        return ans;
+    }
+}
+```
+
+---
+
+## Time Complexity
+
+**O(n + m)**
+
+where:
+
+* `n` = size of first array
+* `m` = size of second array
+
+---
+
+## Space Complexity
+
+**O(n + m)**
+
+(Required for storing the union.)
+
+---
+
+## Key Points
+
+* Use the **Two Pointer Technique**.
+* Skip duplicate elements before comparison.
+* Traverse both arrays only once.
+* Handle the remaining elements when one array finishes first.
+* Return all **distinct** elements in sorted order.
