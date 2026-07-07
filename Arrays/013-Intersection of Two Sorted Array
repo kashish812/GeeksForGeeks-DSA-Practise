@@ -1,0 +1,123 @@
+# 013 - Intersection of Two Sorted Arrays (GFG)
+
+## Problem
+
+Given two sorted arrays `arr1[]` and `arr2[]`, return the **intersection** of both arrays. The intersection should contain only the common elements.
+
+---
+
+## Example
+
+**Input**
+
+
+arr1 = [1, 2, 2, 3, 4]
+arr2 = [2, 2, 4, 6]
+
+
+**Output**
+
+[2, 4]
+
+
+
+
+## Algorithm
+
+1. Create an `ArrayList` to store the answer.
+2. Initialize two pointers:
+
+   * `i = 0` for `arr1`
+   * `j = 0` for `arr2`
+3. Traverse both arrays while both pointers are within their array bounds.
+4. Skip duplicate elements in both arrays.
+5. Compare the current elements:
+
+   * If `arr1[i] < arr2[j]`, increment `i`.
+   * If `arr2[j] < arr1[i]`, increment `j`.
+   * Otherwise, both elements are equal:
+
+     * Add the element to the answer.
+     * Increment both pointers.
+6. Return the intersection list.
+
+---
+
+## Approach
+
+* Since both arrays are sorted, use the **Two Pointer Technique**.
+* Skip duplicate elements before comparison.
+* Move only the pointer pointing to the smaller element.
+* When both elements are equal, add the element once and move both pointers.
+
+---
+
+## Java Code
+
+```java
+class Solution {
+    public ArrayList<Integer> intersection(int arr1[], int arr2[]) {
+
+        ArrayList<Integer> ans = new ArrayList<>();
+
+        int i = 0;
+        int j = 0;
+
+        while (i < arr1.length && j < arr2.length) {
+
+            while (i > 0 && i < arr1.length && arr1[i] == arr1[i - 1]) {
+                i++;
+            }
+
+            while (j > 0 && j < arr2.length && arr2[j] == arr2[j - 1]) {
+                j++;
+            }
+
+            if (i >= arr1.length || j >= arr2.length) {
+                break;
+            }
+
+            if (arr1[i] < arr2[j]) {
+                i++;
+            } else if (arr2[j] < arr1[i]) {
+                j++;
+            } else {
+                ans.add(arr1[i]);
+                i++;
+                j++;
+            }
+        }
+
+        return ans;
+    }
+}
+```
+
+---
+
+## Time Complexity
+
+**O(n + m)**
+
+where:
+
+* `n` = size of `arr1`
+* `m` = size of `arr2`
+
+---
+
+## Space Complexity
+
+**O(k)**
+
+where `k` is the number of common elements stored in the answer.
+
+---
+
+## Key Points
+
+* Use the **Two Pointer Technique**.
+* Traverse both arrays only once.
+* Skip duplicate elements before comparison.
+* Use `&&` in the `while` condition because intersection is possible only while both arrays have remaining elements.
+* Return only the common elements.
